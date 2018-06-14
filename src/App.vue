@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <product-list-one :products='products'/>
-    <product-list-two :products='products'/>
+    <product-list-one/>
+    <product-list-two/>
   </div>
 </template>
 
@@ -14,16 +14,6 @@ export default {
   components: {
     'product-list-one': ProductListOne,
     'product-list-two': ProductListTwo,
-  },
-  data() {
-    return {
-      products: [
-        { name: 'Banana Skiin', price: 20 },
-        { name: 'Shiny Star', price: 40 },
-        { name: 'Green Shells', price: 60 },
-        { name: 'Red Shells', price: 80 },
-      ],
-    };
   },
 };
 </script>

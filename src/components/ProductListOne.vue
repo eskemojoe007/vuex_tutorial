@@ -12,17 +12,10 @@
 
 <script>
 export default {
-  props: {
-    products: {
-      type: Object,
-      default() {
-        const d = { name: 'Banana Skiin', price: 20 };
-        return d;
-      },
+  computed: {
+    products() {
+      return this.$store.state.products;
     },
-  },
-  data() {
-    return {};
   },
 };
 </script>
