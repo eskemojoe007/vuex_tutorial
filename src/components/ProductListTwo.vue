@@ -1,9 +1,10 @@
+
 <template lang="html">
   <div id="product-list-two">
-    <h2>Product List Two</h2>
+    <h2>Product List Two - Sale Items</h2>
     <ul>
       <li
-        v-for="(product,item) in products"
+        v-for="(product,item) in saleProducts"
         :key="item">
         {{ product.name }} - {{ product.price }}$
       </li>
@@ -12,12 +13,20 @@
 </template>
 
 <script>
+// import { mapGetters } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
+
+
 export default {
   computed: {
-    products() {
-      return this.$store.state.products;
-    },
+    ...mapState(['products']),
+    ...mapGetters(['saleProducts']),
   },
+  // Vuex.mapGetters(['saleProducts']),
+  // products() {
+  //   return this.$store.state.products;
+  // },
+
 };
 </script>
 
