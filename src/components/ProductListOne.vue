@@ -7,24 +7,24 @@
         <span class="price">{{ product.price }}</span>
       </li>
     </ul>
-    <button @click="reducePrice">Reduce Price</button>
+    <button @click="reducePrice(4)">Reduce Price</button>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
+
 export default {
   computed: {
-    products() {
-      return this.$store.state.products;
-    },
+    ...mapState([
+      'products',
+    ]),
   },
   methods: {
-    reducePrice() {
-      this.$store.commit('reducePrice');
-      // this.$store.state.products.forEach((product) => {
-      //   product.price -= 1
-      // });
-    },
+    ...mapActions([
+      'reducePrice',
+    ]),
+
   },
 };
 </script>

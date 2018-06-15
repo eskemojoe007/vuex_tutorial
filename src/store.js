@@ -4,7 +4,7 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  strict: true,
+  strict: process.env.NODE_ENV !== 'production',
   state: {
     products: [
       { name: 'Banana Skin', price: 20 },
@@ -24,14 +24,18 @@ export default new Vuex.Store({
   },
   mutations: {
     /* eslint-disable no-param-reassign */
-    reducePrice: (state) => {
+    reducePrice: (state, payload) => {
       state.products.forEach((product) => {
-        product.price -= 1;
+        product.price -= payload;
       });
     },
     /* eslint-disable no-param-reassign */
   },
   actions: {
-
+    reducePrice: (context, payload) => {
+      setTimeout(() => {
+        context.commit('reducePrice', payload);
+      }, 2000);
+    },
   },
 });
